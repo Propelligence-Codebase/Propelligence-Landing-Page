@@ -1,0 +1,398 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+  }
+}
+
+body {
+  font-family: 'Oswald', var(--font-oswald), sans-serif;
+}
+
+/* Title styles using Oswald */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', var(--font-oswald), sans-serif !important;
+}
+
+/* Content styles using Oswald */
+p, span, div, li, a {
+  font-family: 'Oswald', var(--font-oswald), sans-serif !important;
+}
+
+/* Specific rule for hero section titles */
+.hero-title {
+  font-family: 'Oswald', var(--font-oswald), sans-serif !important;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.animate-gradient-move {
+  background-size: 200% 200%;
+  animation: gradient-move 8s ease-in-out infinite;
+}
+.expandable-content {
+  will-change: max-height, opacity, margin-top;
+}
+.glow-blue {
+  box-shadow: 0 0 0 5px #e0f2ff, 0 4px 24px 0 #b6e0fe33;
+}
+
+.card-animated-border {
+  position: relative;
+  overflow: hidden;
+}
+.card-animated-border::before,
+.card-animated-border::after,
+.card-animated-border .border-side {
+  pointer-events: none;
+}
+
+.card-animated-border .border-side {
+  position: absolute;
+  background: #022d58;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Top border */
+.card-animated-border .border-top {
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  border-radius: 1rem 1rem 0 0;
+}
+.card-animated-border:hover .border-top,
+.card-animated-border:focus-within .border-top {
+  left: 0;
+  width: 100%;
+}
+
+/* Bottom border */
+.card-animated-border .border-bottom {
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  border-radius: 0 0 1rem 1rem;
+}
+.card-animated-border:hover .border-bottom,
+.card-animated-border:focus-within .border-bottom {
+  left: 0;
+  width: 100%;
+}
+
+/* Left border */
+.card-animated-border .border-left {
+  left: 0;
+  top: 50%;
+  width: 2px;
+  height: 0;
+  border-radius: 1rem 0 0 1rem;
+}
+.card-animated-border:hover .border-left,
+.card-animated-border:focus-within .border-left {
+  top: 0;
+  height: 100%;
+}
+
+/* Right border */
+.card-animated-border .border-right {
+  right: 0;
+  top: 50%;
+  width: 2px;
+  height: 0;
+  border-radius: 0 1rem 1rem 0;
+}
+.card-animated-border:hover .border-right,
+.card-animated-border:focus-within .border-right {
+  top: 0;
+  height: 100%;
+}
+
+/* Navy Blue Loader Animations */
+
+/* Spinning Circle Loader */
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid #1e3a8a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pulsing Dot Loader */
+.loader-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-dots .dot {
+  width: 12px;
+  height: 12px;
+  background-color: #1e3a8a;
+  border-radius: 50%;
+  animation: pulse 1.4s ease-in-out infinite both;
+}
+
+.loader-dots .dot:nth-child(1) { animation-delay: -0.32s; }
+.loader-dots .dot:nth-child(2) { animation-delay: -0.16s; }
+.loader-dots .dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes pulse {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Bouncing Bars Loader */
+.loader-bars {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-bars .bar {
+  width: 4px;
+  height: 20px;
+  background-color: #1e3a8a;
+  border-radius: 2px;
+  animation: bounce 1.2s ease-in-out infinite;
+}
+
+.loader-bars .bar:nth-child(1) { animation-delay: -0.4s; }
+.loader-bars .bar:nth-child(2) { animation-delay: -0.2s; }
+.loader-bars .bar:nth-child(3) { animation-delay: 0s; }
+.loader-bars .bar:nth-child(4) { animation-delay: 0.2s; }
+.loader-bars .bar:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
+}
+
+/* Rotating Square Loader */
+.loader-square {
+  width: 30px;
+  height: 30px;
+  background-color: #1e3a8a;
+  animation: rotate-square 1.2s ease-in-out infinite;
+}
+
+@keyframes rotate-square {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Wave Loader */
+.loader-wave {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-wave .wave {
+  width: 3px;
+  height: 20px;
+  background-color: #1e3a8a;
+  border-radius: 1px;
+  animation: wave 1s ease-in-out infinite;
+}
+
+.loader-wave .wave:nth-child(1) { animation-delay: 0s; }
+.loader-wave .wave:nth-child(2) { animation-delay: 0.1s; }
+.loader-wave .wave:nth-child(3) { animation-delay: 0.2s; }
+.loader-wave .wave:nth-child(4) { animation-delay: 0.3s; }
+.loader-wave .wave:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes wave {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
+}
+
+/* Aura Animations for Service Cards */
+@keyframes auraRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes auraPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes auraGlow {
+  0%, 100% { background-position: 0% 50%; filter: blur(8px); }
+  50% { background-position: 100% 50%; filter: blur(12px); }
+}
+
+.animate-aura-rotate {
+  background-size: 200% 200%;
+  animation: auraRotate 8s linear infinite;
+}
+
+.animate-aura-pulse {
+  background-size: 150% 150%;
+  animation: auraPulse 4s ease-in-out infinite;
+}
+
+.animate-aura-glow {
+  background-size: 300% 300%;
+  animation: auraGlow 6s ease-in-out infinite;
+}
+
+/* Ring Loader */
+.loader-ring {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #1e3a8a;
+  border-radius: 50%;
+  animation: ring-spin 1s linear infinite;
+}
+
+@keyframes ring-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Heartbeat Loader */
+.loader-heartbeat {
+  width: 30px;
+  height: 30px;
+  background-color: #1e3a8a;
+  border-radius: 50%;
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Loading Text with Dots */
+.loader-text {
+  color: #1e3a8a;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.loader-text::after {
+  content: '';
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+/* Floating Animation for Design Elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Centered Loader Container */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  width: 100%;
+}
+
+/* Full Screen Loader */
+.loader-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+/* Small Loader Variants */
+.loader-spinner-sm {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #1e3a8a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader-spinner-lg {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #1e3a8a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
